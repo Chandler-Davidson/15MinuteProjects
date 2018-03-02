@@ -6,10 +6,8 @@ namespace CoffeeOrderingSystem.src
         public readonly string productID;
         public string name;
         public double price;
-        public int quantity;
-        public double Total => price * quantity;
 
-		public Product(string name, double price)
+        public Product(string name, double price)
 		{
 			productID = BillingSystem.NewID();
 

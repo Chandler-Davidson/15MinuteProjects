@@ -9,24 +9,30 @@ namespace CoffeeOrderingSystem
     {
         public static void Main(string[] args)
         {
-            var con = DBConnection.Instance;
-
             var cust = new Customer("Chandler", "Davidson");
-            Console.WriteLine(cust.firstName + " " + cust.lastName + "\nID: " + cust.userID);
-
-            var coffee = new Product("Coffee", 2.50);
-            var espresso = new Product("Espresso", 3.00);
 
             var order1 = new Order();
-            var l = new List<Product>() { coffee, espresso };
+            var l = new Dictionary<Product, int>()
+            {
+                { new Product("coffee", 2.50), 3 },
+                { new Product("espresso", 3.00), 1 }
+            };
+            order1.AddToOrder(l);
 
-            //order1.AddToOrder(new List<Product>(){ coffee, espresso });
+            cust.AddOrder(order1);
 
-            Console.WriteLine(order1.Total);
+            foreach (var order in cust.Orders)
+            {
+                foreach (var productQuantityPair in order.productQuantity)
+                {
+                    var product = productQuantityPair.Key;
+                    var quantity = productQuantityPair.Value;
 
-            double total => l.Sum(x => x.Total);
+                    Console.WriteLine($"{product.name}: ${product.price}\tX{quantity}");
+                }
 
-            Console.WriteLine(total);
+                Console.WriteLine("==========\nTotal: " + order.Total);
+            }
         }
     }
 }
