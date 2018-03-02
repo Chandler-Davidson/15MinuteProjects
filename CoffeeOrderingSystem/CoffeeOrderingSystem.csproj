@@ -53,6 +53,7 @@
     <Compile Include="src\Order.cs" />
     <Compile Include="src\Customer.cs" />
     <Compile Include="src\BillingSystem.cs" />
+    <Compile Include="src\Product.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="docs\MySqlTransaction.xml" />

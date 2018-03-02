@@ -15,9 +15,9 @@ namespace CoffeeOrderingSystem
         {
             try
             {
-                string connDetails = string.Format("Server=localhost; database={0}; UID=UserName; password=your password", databaseName);
-                sqlConnection = new MySqlConnection(connDetails);
-                sqlConnection.Open();
+                //string connDetails = string.Format("Server=localhost; database={0}; UID=UserName; password=your password", databaseName);
+                //sqlConnection = new MySqlConnection(connDetails);
+                //sqlConnection.Open();
             }
             catch(MySqlException e)
             {
