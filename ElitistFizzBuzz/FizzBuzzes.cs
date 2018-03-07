@@ -41,7 +41,7 @@ namespace ElitistFizzBuzz
                 stopwatch.Stop();
 
                 results.Add(stopwatch.Elapsed);
-                stopwatch.Restart();
+                stopwatch.Reset();
 			}
 
             return results;
