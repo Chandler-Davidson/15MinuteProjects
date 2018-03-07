@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 
 namespace ElitistFizzBuzz
 {
@@ -6,13 +6,16 @@ namespace ElitistFizzBuzz
     {
         public static void Main(string[] args)
         {
-            var foo = new FizzBuzzes();
-            var results = foo.recordTimes(1, 3000); // Range of numbers
+            var fb = new FizzBuzzes(1, 30000);
+            var times = Tester.RecordTimes(fb.functions);
 
-            Console.WriteLine("\n\n\n\n\n");
+			Console.WriteLine("\n\n\nTEST #: Time Elapsed (ms)");
 
-            for (int i = 0; i < results.Count; i++)
-				Console.WriteLine("TEST {0}: {1}", i, results[i]);
+			for (int i = 0; i < times.Count; i++)
+            {
+                var t = times[i];
+                Console.WriteLine($"TEST {i}: {times[i]}");
+            }
         }
     }
 }
