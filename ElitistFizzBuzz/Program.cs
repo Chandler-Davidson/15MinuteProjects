@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿using System;
 
 namespace ElitistFizzBuzz
 {
@@ -6,7 +6,7 @@ namespace ElitistFizzBuzz
     {
         public static void Main(string[] args)
         {
-            var fb = new FizzBuzzes(1, 30000);
+            var fb = new FizzBuzzes(1, 1000);
             var times = Tester.RecordTimes(fb.functions);
 
             Console.WriteLine("\n\n\nTEST #: Time Elapsed (ms)");

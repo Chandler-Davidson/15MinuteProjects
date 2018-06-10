@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FAD11A40-9101-46EA-BFE3-DC3205E2F062}</ProjectGuid>
+    <ProjectGuid>{96CBEB41-B783-4552-8406-7A087EA95EAF}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ElitistFizzBuzz</RootNamespace>
-    <AssemblyName>ElitistFizzBuzz</AssemblyName>
+    <RootNamespace>PredictiveText</RootNamespace>
+    <AssemblyName>PredictiveText</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,10 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FizzBuzzes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tester.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
