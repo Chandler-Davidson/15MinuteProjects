@@ -25,6 +25,9 @@ namespace WPFWeather
 
         public MainWindow()
         {
+            var mainWeatherNode = APIWrapper.GetData("Huntsville, AL");
+            //MessageBox.Show(mainWeatherNode.Location.CityName);
+
             /// Define some data
             Location = new LocationData
             {
@@ -43,47 +46,53 @@ namespace WPFWeather
                 }
             };
 
-            
-
 
             InitializeComponent();
             this.DataContext = this;
 
             this.HourlyChart.SelectedDay = new Day()
             {
-                DayName = "Thursday",
-                AvgCondition = new WeatherData
-                {
-                    Temperature = 97,
-                    Condition = "Rain",
-                },
-
                 Hours = new List<WeatherData>()
                 {
                     new WeatherData()
                     {
-                        Hour = 12,
+                        HourText = "10AM",
+                        Temperature = 83
+                    },
+                    new WeatherData()
+                    {
+                        HourText = "1PM",
                         Temperature = 90
                     },
                     new WeatherData()
                     {
-                        Hour = 2,
-                        Temperature = 85
-                    },
-                    new WeatherData()
-                    {
-                        Hour = 3,
+                        HourText = "4PM",
                         Temperature = 95
                     },
                     new WeatherData()
                     {
-                        Hour = 4,
-                        Temperature = 90
+                        HourText = "7PM",
+                        Temperature = 91
                     },
                     new WeatherData()
                     {
-                        Hour = 5,
+                        HourText = "10PM",
+                        Temperature = 89
+                    },
+                    new WeatherData()
+                    {
+                        HourText = "1AM",
                         Temperature = 80
+                    },
+                    new WeatherData()
+                    {
+                        HourText = "4AM",
+                        Temperature = 76
+                    },
+                    new WeatherData()
+                    {
+                        HourText = "7AM",
+                        Temperature = 72
                     }
                 }
             };
@@ -99,6 +108,11 @@ namespace WPFWeather
 
             //this.HourlyChart.SelectedDay = d.Model;
             
+        }
+
+        private void ChangeViewButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.HourlyChart.View = e.Source.ToString();
         }
     }
 }

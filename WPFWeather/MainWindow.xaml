@@ -36,17 +36,17 @@
             Grid.Row="1"
             Orientation="Horizontal">
             <Image
-                Margin="15,0,0,15"
+                Margin="15,10,0,15"
                 Source="C:\Users\cdavidso\Documents\GitHub\15MinuteProjects\WPFWeather\Media\sunny.png"/>
             <Label
                 Content="73"
                 VerticalAlignment="Center"
-                Margin="-10"
+                Margin="-10,0,0,20"
                 Style="{StaticResource CurrentTemperature}"/>
             <Label
                 Content="°F | °C"
                 VerticalAlignment="Center"
-                Margin="0,0,0,30"
+                Margin="0,0,0,50"
                 FontSize="20"/>
         </StackPanel>
         <StackPanel
@@ -61,11 +61,14 @@
                 Orientation="Horizontal"
                 Style="{StaticResource ButtonSelector}">
                 <Button
-                    Content="Temperature"/>
+                    Content="Temperature"
+                    Click="ChangeViewButton_Click"/>
                 <Button
-                    Content="Percipitation"/>
+                    Content="Percipitation"
+                    Click="ChangeViewButton_Click"/>
                 <Button
-                    Content="Wind"/>
+                    Content="Wind"
+                    Click="ChangeViewButton_Click"/>
             </StackPanel>
         </StackPanel>
 
@@ -81,7 +84,8 @@
             HorizontalAlignment="Center"
             MouseDown="DayView_MouseDown"
             x:Name="DayViewController">
-            <local:DayViewControl/>
+            <local:DayViewControl
+                />
             <local:DayViewControl/>
             <local:DayViewControl/>
             <local:DayViewControl/>

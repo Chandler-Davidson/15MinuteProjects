@@ -8,7 +8,7 @@
             <Style.Resources>
                 <Style TargetType="Label">
                     <Setter Property="Foreground" Value="#707070"/>
-                    <Setter Property="FontSize" Value="20"/>
+                    <Setter Property="FontSize" Value="15"/>
                     <Setter Property="Margin" Value="10,-6,0,-6"/>
                 </Style>
             </Style.Resources>
@@ -17,10 +17,10 @@
             <Setter Property="FontSize" Value="70"/>
         </Style>
         <Style TargetType="StackPanel" x:Key="ButtonSelector">
-            <Setter Property="Margin" Value="16,20,0,0"/>
+            <Setter Property="Margin" Value="15,10,0,0"/>
             <Style.Resources>
                 <Style TargetType="Button">
-                    <Setter Property="FontSize" Value="17"/>
+                    <Setter Property="FontSize" Value="12"/>
                     <Setter Property="Margin" Value="0,0,2,0"/>
                 </Style>
             </Style.Resources>
