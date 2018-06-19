@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFWeather"
         mc:Ignorable="d"
-        Title="MainWindow" Height="563.564" Width="548.091">
+        Title="MainWindow" Height="482.564" Width="655.091">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -37,7 +37,7 @@
             Orientation="Horizontal">
             <Image
                 Margin="15,0,0,15"
-                Source="D:\Users\Chandler\Documents\GitHub\15MinuteProjects\WPFWeather\Media\40.png"/>
+                Source="C:\Users\cdavidso\Documents\GitHub\15MinuteProjects\WPFWeather\Media\sunny.png"/>
             <Label
                 Content="73"
                 VerticalAlignment="Center"
@@ -71,12 +71,20 @@
 
         <local:HourlyChartControl
             Grid.ColumnSpan="2"
-            Grid.Row="2"/>
+            Grid.Row="2"
+            x:Name="HourlyChart"/>
 
         <StackPanel
             Grid.ColumnSpan="2"
             Grid.Row="3"
-            Orientation="Horizontal">
+            Orientation="Horizontal"
+            HorizontalAlignment="Center"
+            MouseDown="DayView_MouseDown"
+            x:Name="DayViewController">
+            <local:DayViewControl/>
+            <local:DayViewControl/>
+            <local:DayViewControl/>
+            <local:DayViewControl/>
             <local:DayViewControl/>
         </StackPanel>
 

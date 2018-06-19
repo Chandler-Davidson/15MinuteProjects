@@ -25,9 +25,8 @@
                 </Style>
             </Style.Resources>
         </Style>
-
         <Style TargetType="Label" x:Key="DayDetialLight">
-            <Setter Property="Foreground" Value="LightGray"/>
+            <Setter Property="Foreground" Value="Gray"/>
             <Setter Property="FontSize" Value="14"/>
         </Style>
 

@@ -5,21 +5,25 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPFWeather"
              mc:Ignorable="d" Height="110" Width="80.25">
-    <StackPanel
-        Orientation="Vertical">
-        <Label Content="Sat"
-               HorizontalAlignment="Center"
-               Style="{StaticResource DayDetialLight}"/>
-        <Image
-            VerticalAlignment="Center"
-            Source="D:\Users\Chandler\Documents\GitHub\15MinuteProjects\WPFWeather\Media\40.png" 
-            Width="64" Height="51" Margin="13,-5,13,5"/>
+    <GroupBox
+        BorderBrush="Transparent"
+        x:Name="ParentGroupBox">
         <StackPanel
-            Orientation="Horizontal"
-            HorizontalAlignment="Center">
-            <Label Content="95°"/>
-            <Label Content="71°"
+            Orientation="Vertical">
+            <Label Content="Sat"
+                   HorizontalAlignment="Center"
                    Style="{StaticResource DayDetialLight}"/>
+            <Image
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Source="C:\Users\cdavidso\Documents\GitHub\15MinuteProjects\WPFWeather\Media\sunny.png" Height="56" Width="56" Margin="11,0,13,0"/>
+            <StackPanel
+                Orientation="Horizontal"
+                HorizontalAlignment="Center">
+                <Label Content="95°"/>
+                <Label Content="71°"
+                       Style="{StaticResource DayDetialLight}"/>
+            </StackPanel>
         </StackPanel>
-    </StackPanel>
+    </GroupBox>
 </UserControl>

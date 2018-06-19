@@ -26,6 +26,27 @@ namespace WPFWeather
         public SeriesCollection SeriesCollection { get; set; }
         public string[] Labels { get; set; }
         public Func<double, string> YFormatter { get; set; }
+        private Day selectedDay;
+        public Day SelectedDay
+        {
+            get
+            {
+                return selectedDay;
+            }
+
+            set
+            {
+                if (value != selectedDay)
+                {
+                    selectedDay = value;
+
+                    SeriesCollection[0].Values.Clear();
+                    SeriesCollection[0].Values.AddRange(SelectedDay.Hours.Select(x => x.Temperature).Cast<object>());
+
+                    Labels = SelectedDay.Hours.Select(x => x.Hour.ToString()).ToArray();
+                }
+            }
+        }
 
         public HourlyChartControl()
         {
@@ -35,9 +56,20 @@ namespace WPFWeather
             {
                 new LineSeries
                 {
-                    Title = "Series 1",
-                    Values = new ChartValues<double> { 91, 87, 83, 76, 74, 72, 74, 84 }
+                    Title = "Tempearture",
+                    Values = new ChartValues<int> { 91, 87, 83, 76, 74, 72, 74, 84 }
                 },
+                //new LineSeries
+                //{
+                //    Title = "Humidity",
+                //    Values = new ChartValues<double> { 91, 87, 83, 76, 74, 72, 74, 84 }
+                //},
+                //new LineSeries
+                //{
+                //    Title = "Percipitation",
+                //    Values = new ChartValues<double> { 91, 87, 83, 76, 74, 72, 74, 84 }
+                //},
+
             };
 
             Labels = new[] { "2PM", "5PM", "8PM", "11PM", "2AM", "5AM", "8AM", "11AM" };
