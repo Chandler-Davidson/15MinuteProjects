@@ -25,28 +25,6 @@ namespace WPFWeather
     {
         public SeriesCollection SeriesCollection { get; set; }
         public string[] Labels { get; set; }
-        public string View { get; set; }
-        private Day selectedDay;
-        public Day SelectedDay
-        {
-            get
-            {
-                return selectedDay;
-            }
-
-            set
-            {
-                if (value != selectedDay)
-                {
-                    selectedDay = value;
-
-                    SeriesCollection[0].Values.Clear();
-                    SeriesCollection[0].Values.AddRange(SelectedDay.Hours.Select(x => x.Temperature).Cast<object>());
-
-                    Labels = SelectedDay.Hours.Select(x => x.HourText).ToArray();
-                }
-            }
-        }
 
         public HourlyChartControl()
         {

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using GetWeather;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace WPFWeather
     static class APIWrapper
     {
         private static WebClient Client = new WebClient();
-        private static string appID = "49f7841c12274550a57cc63dd69172c1";
+        private static readonly string appID = "49f7841c12274550a57cc63dd69172c1";
         private static string url;
 
         public static Response GetData(string location)
@@ -20,7 +21,7 @@ namespace WPFWeather
 
             var jsonData = Client.DownloadString(url);
 
-            return JsonConvert.DeserializeObject<Response>(jsonData);
+            return Response.FromJson(jsonData);
         }
     }
 }

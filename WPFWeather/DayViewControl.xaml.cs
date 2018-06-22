@@ -20,7 +20,6 @@ namespace WPFWeather
     /// </summary>
     public partial class DayViewControl : UserControl
     {
-        public Day Model { get; set; }
 
         public DayViewControl()
         {

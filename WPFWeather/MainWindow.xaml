@@ -22,7 +22,7 @@
             Orientation="Vertical"
             Style="{StaticResource LocationDetails}">
             <Label
-                Content="Huntsville, AL 35801"
+                Content="{Binding Source=CityName}"
                 x:Name="LocationName"
                 FontSize="25"
                 Foreground="#474747"/>
@@ -37,7 +37,7 @@
             Orientation="Horizontal">
             <Image
                 Margin="15,10,0,15"
-                Source="C:\Users\cdavidso\Documents\GitHub\15MinuteProjects\WPFWeather\Media\sunny.png"/>
+                Source="D:\Users\Chandler\Documents\GitHub\15MinuteProjects\WPFWeather\Media\sunny.png"/>
             <Label
                 Content="73"
                 VerticalAlignment="Center"
@@ -84,8 +84,7 @@
             HorizontalAlignment="Center"
             MouseDown="DayView_MouseDown"
             x:Name="DayViewController">
-            <local:DayViewControl
-                />
+            <local:DayViewControl/>
             <local:DayViewControl/>
             <local:DayViewControl/>
             <local:DayViewControl/>

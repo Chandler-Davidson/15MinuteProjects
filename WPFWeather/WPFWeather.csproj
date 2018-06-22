@@ -63,13 +63,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="APIResponse.cs" />
     <Compile Include="DayViewControl.xaml.cs">
       <DependentUpon>DayViewControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="HourlyChartControl.xaml.cs">
       <DependentUpon>HourlyChartControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WeatherData.cs" />
     <Compile Include="WeekViewControl.xaml.cs">
       <DependentUpon>WeekViewControl.xaml</DependentUpon>
     </Compile>
