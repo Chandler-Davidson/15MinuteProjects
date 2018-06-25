@@ -21,10 +21,21 @@
         <StackPanel
             Orientation="Vertical"
             Style="{StaticResource LocationDetails}">
-            <Label
+            <!--<Label
                 Content="{Binding Response.City.Name}"
                 FontSize="25"
-                Foreground="#474747"/>
+                Foreground="#474747"/>-->
+
+            <TextBox
+                Text="Huntsville"
+                FontSize="25"
+                Foreground="#474747"
+                BorderBrush="Transparent"
+                Margin="12,0,119,0"
+                KeyDown="TextBox_KeyDown"
+                x:Name="LocationTextBox"/>
+
+
             <Label
                 Content="{Binding CurrentHour.DtHuman}"/>
             <Label

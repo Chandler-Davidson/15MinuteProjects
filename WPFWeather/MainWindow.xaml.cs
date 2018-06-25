@@ -67,12 +67,39 @@ namespace WPFWeather
                 x => x.DtTxt.Day,
                 (key, w) => new { Dt = key, Hours = w.ToList() }).ToList();
 
-
+            DayViewController.Children.Clear();
             d.ForEach(x => DayViewController.Children.Add(new DayViewControl(x.Hours)));
         }
 
         private void ChangeViewButton_Click(object sender, RoutedEventArgs e)
         {
+        }
+
+        private void TextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                if (LocationTextBox.Text.Length == 0)
+                {
+                    LocationTextBox.BorderBrush = Brushes.Red;
+                }
+                else
+                {
+                    try
+                    {
+                        LocationTextBox.BorderBrush = Brushes.Transparent;
+
+                        Response = APIWrapper.GetData(LocationTextBox.Text + ", US");
+
+                        SetFormControls();
+                        SetDayView();
+                    }
+                    catch (System.Net.WebException)
+                    {
+                        LocationTextBox.BorderBrush = Brushes.Red;
+                    }
+                }
+            }
         }
     }
 }

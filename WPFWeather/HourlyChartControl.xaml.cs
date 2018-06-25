@@ -66,6 +66,7 @@ namespace WPFWeather
 
             SelectedDay = d[0].Hours;
 
+            SeriesCollection.Clear();
 
             SeriesCollection.Add(
             new LineSeries
