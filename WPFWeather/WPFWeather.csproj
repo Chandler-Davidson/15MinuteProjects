@@ -127,42 +127,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Media\40.png" />
-    <Resource Include="Media\chance of rain.png" />
-    <Resource Include="Media\chance of showers.png" />
-    <Resource Include="Media\chance of snow.png" />
-    <Resource Include="Media\chance of storm.png" />
-    <Resource Include="Media\clear.png" />
-    <Resource Include="Media\cloudy.png" />
-    <Resource Include="Media\drizzle.png" />
-    <Resource Include="Media\flurries.png" />
-    <Resource Include="Media\fog.png" />
-    <Resource Include="Media\freezing drizzle.png" />
-    <Resource Include="Media\hail.png" />
-    <Resource Include="Media\haze.png" />
-    <Resource Include="Media\icy.png" />
-    <Resource Include="Media\light rain.png" />
-    <Resource Include="Media\light snow.png" />
-    <Resource Include="Media\mist.png" />
-    <Resource Include="Media\mostly cloudy.png" />
-    <Resource Include="Media\mostly sunny.png" />
-    <Resource Include="Media\overcast.png" />
-    <Resource Include="Media\partly cloudy.png" />
-    <Resource Include="Media\partly sunny.png" />
-    <Resource Include="Media\rain and snow.png" />
-    <Resource Include="Media\rain snow.png" />
-    <Resource Include="Media\rain.png" />
-    <Resource Include="Media\scattered showers.png" />
-    <Resource Include="Media\scattered thunderstorms.png" />
-    <Resource Include="Media\showers.png" />
-    <Resource Include="Media\sleet.png" />
-    <Resource Include="Media\slight drizzle.png" />
-    <Resource Include="Media\smoke.png" />
-    <Resource Include="Media\snow showers.png" />
-    <Resource Include="Media\snow.png" />
-    <Resource Include="Media\storm.png" />
-    <Resource Include="Media\sunny.png" />
-    <Resource Include="Media\thunderstorm.png" />
+    <Folder Include="Media\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

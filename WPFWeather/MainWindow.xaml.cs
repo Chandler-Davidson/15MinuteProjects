@@ -38,6 +38,9 @@ namespace WPFWeather
 
             SetDayView();
 
+            WeatherIcon.Source = new BitmapImage(new Uri("../../Media/" + CurrentHour.Weather[0].Main + ".png", UriKind.Relative));
+
+
             DataContext = this;
         }
 

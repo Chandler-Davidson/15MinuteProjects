@@ -47,6 +47,7 @@
             Orientation="Horizontal">
             <Image
                 Margin="15,10,0,15"
+                x:Name="WeatherIcon"
                 Source="D:\Users\Chandler\Documents\GitHub\15MinuteProjects\WPFWeather\Media\sunny.png"/>
             <Label
                 Content="{Binding CurrentHour.Main.TempI}"
