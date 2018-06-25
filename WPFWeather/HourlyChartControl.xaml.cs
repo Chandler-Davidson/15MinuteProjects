@@ -35,25 +35,7 @@ namespace WPFWeather
         {
             InitializeComponent();
 
-            SeriesCollection = new SeriesCollection
-            {
-                //new LineSeries
-                //{
-                //    Title = "Tempearture",
-                //    Values = new ChartValues<int> { 91, 87, 83, 76, 74, 72, 74, 84 }
-                //},
-                //new LineSeries
-                //{
-                //    Title = "Humidity",
-                //    Values = new ChartValues<double> { 91, 87, 83, 76, 74, 72, 74, 84 }
-                //},
-                //new LineSeries
-                //{
-                //    Title = "Percipitation",
-                //    Values = new ChartValues<double> { 91, 87, 83, 76, 74, 72, 74, 84 }
-                //},
-
-            };
+            SeriesCollection = new SeriesCollection();
 
             DataContext = this;
         }
@@ -72,7 +54,25 @@ namespace WPFWeather
             new LineSeries
             {
                 Title = "Temperature",
-                Values = new ChartValues<int>(SelectedDay.Select(x => Convert.ToInt32(x.Main.Temp)))
+                Values = new ChartValues<int>(SelectedDay.Select(x => Convert.ToInt32(x.Main.Temp))),
+                DataLabels = true
+            });
+
+            Labels = SelectedDay.Select(x => x.DtTxt.ToString("hh tt")).ToArray<string>();
+        }
+
+        public void SetSelectedDay(List<Hour> hours)
+        {
+            SelectedDay = hours;
+
+            SeriesCollection.Clear();
+
+            SeriesCollection.Add(
+            new LineSeries
+            {
+                Title = "Temperature",
+                Values = new ChartValues<int>(SelectedDay.Select(x => Convert.ToInt32(x.Main.Temp))),
+                DataLabels = true
             });
 
             Labels = SelectedDay.Select(x => x.DtTxt.ToString("hh tt")).ToArray<string>();

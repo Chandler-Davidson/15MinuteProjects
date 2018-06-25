@@ -34,28 +34,33 @@ namespace WPFWeather
 
             Response = APIWrapper.GetData("Huntsville, AL");
 
-            SetFormControls();
+            SetFormControls(Response.List[0]);
 
             SetDayView();
 
-            WeatherIcon.Source = new BitmapImage(new Uri("../../Media/" + CurrentHour.Weather[0].Main + ".png", UriKind.Relative));
+            WeatherIcon.Source = new BitmapImage(
+                new Uri("Media/" + CurrentHour.Weather[0].Icon.Substring(0, 2) + ".png", UriKind.Relative));
 
 
             DataContext = this;
         }
 
-
-        private void SetFormControls()
+        public void SetFormControls(Hour hour)
         {
             CityName = Response.City.Name;
 
-            CurrentHour = Response.List[0];
+            CurrentHour = hour;
             CurrentCondition = CurrentHour.Weather[0].Main;
+
+            HourLabel.Content = CurrentHour.DtHuman;
+            CurrentConditionLabel.Content = CurrentHour.Weather[0].Main;
+            TempLabel.Content = Convert.ToInt32(CurrentHour.Main.Temp);
+            HumidityLabel.Content = CurrentHour.Main.HumidityHuman;
+            WindLabel.Content = CurrentHour.Wind.WindHuman;
 
             this.HourlyChart.SetDays(Response.List.ToList());
         }
         
-
         private void DayView_MouseDown(object sender, MouseButtonEventArgs e)
         {
             foreach (DayViewControl dayControl in this.DayViewController.Children)
@@ -71,7 +76,7 @@ namespace WPFWeather
                 (key, w) => new { Dt = key, Hours = w.ToList() }).ToList();
 
             DayViewController.Children.Clear();
-            d.ForEach(x => DayViewController.Children.Add(new DayViewControl(x.Hours)));
+            d.ForEach(x => DayViewController.Children.Add(new DayViewControl(x.Hours, HourlyChart, this)));
         }
 
         private void ChangeViewButton_Click(object sender, RoutedEventArgs e)
@@ -94,7 +99,7 @@ namespace WPFWeather
 
                         Response = APIWrapper.GetData(LocationTextBox.Text + ", US");
 
-                        SetFormControls();
+                        SetFormControls(Response.List[0]);
                         SetDayView();
                     }
                     catch (System.Net.WebException)

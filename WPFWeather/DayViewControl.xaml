@@ -7,7 +7,8 @@
              mc:Ignorable="d" Height="110" Width="80.25">
     <GroupBox
         BorderBrush="Transparent"
-        x:Name="ParentGroupBox">
+        x:Name="ParentGroupBox"
+        MouseDown="ParentGroupBox_MouseDown">
         <StackPanel
             Orientation="Vertical">
             <Label Content="{Binding DayName}"
@@ -16,7 +17,8 @@
             <Image
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Source="D:\Users\Chandler\Documents\GitHub\15MinuteProjects\WPFWeather\Media\sunny.png" Height="56" Width="56" Margin="11,0,13,0"/>
+                Source="{Binding IconPath}" Height="56" Width="56" Margin="11,0,13,0"
+                x:Name="Icon"/>
             <StackPanel
                 Orientation="Horizontal"
                 HorizontalAlignment="Center">

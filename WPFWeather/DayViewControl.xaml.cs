@@ -22,19 +22,38 @@ namespace WPFWeather
     /// </summary>
     public partial class DayViewControl : UserControl
     {
-        public Image Icon { get; set; }
         public string DayName { get; set; }
         public string High { get; set; }
         public string Low { get; set; }
+        public string IconPath { get; set; }
+        public HourlyChartControl HourControl { get; set; }
+        public List<Hour> Day { get; set; }
+        public MainWindow MainWindow { get; set; }
 
-        public DayViewControl(List<Hour> day)
+        public DayViewControl(List<Hour> day, HourlyChartControl hourControl, MainWindow mw)
         {
+            Day = day;
+
+            HourControl = hourControl;
+
+            MainWindow = mw;
+
             var avgCondition = day
                 .GroupBy(x => x.Weather[0].Main)
                 .OrderByDescending(y => y.Count()).FirstOrDefault()
                 .Take(1)
                 .Select(r => r.Weather[0].Main)
                 .First();
+
+            var avgIcon = day
+                .GroupBy(x => x.Weather[0].Icon)
+                .OrderByDescending(y => y.Count()).FirstOrDefault()
+                .Take(1)
+                .Select(r => r.Weather[0].Icon)
+                .First()
+                .Substring(0, 2);
+
+            IconPath = "Media\\" + avgIcon + ".png";
 
             DayName = day[0].DtTxt.DayOfWeek.ToString().Substring(0, 3);
 
@@ -43,6 +62,13 @@ namespace WPFWeather
 
             InitializeComponent();
             DataContext = this;
+        }
+
+        private void ParentGroupBox_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            MainWindow.SetFormControls(Day[1]);
+
+            HourControl.SetSelectedDay(Day);
         }
     }
 }

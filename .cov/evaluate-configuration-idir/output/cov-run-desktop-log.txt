@@ -1,6 +1,6 @@
 startup: Coverity Desktop Analysis version 8.5.0.5 on Windows 10 Professional, 64-bit (build 17134)
 startup: Internal version numbers: 37b2cdd284 p-kent-push-26368.974
-startup: started at 2018-06-18 16:40:21
+startup: started at 2018-06-25 08:49:57
 startup: command line: D:\cov-analysis-win64-8.5.0.5\bin\cov-run-desktop.exe --evaluate-configuration-settings-v1 C:\Users\cdavidso\Documents\GitHub\15MinuteProjects\.cov\evaluated-coverity.conf --dir C:\Users\cdavidso\Documents\GitHub\15MinuteProjects\.cov\evaluate-configuration-idir --code-base-dir C:\Users\cdavidso\Documents\GitHub\15MinuteProjects\ --tmpdir C:\Users\cdavidso\AppData\Local\Temp covRunDesktopFileList.utf8.txt
 settings: {
 settings:   "type": "Coverity configuration",
@@ -59,4 +59,4 @@ settings:     },
 settings:     "tmpdir": "C:\\Users\\cdavidso\\AppData\\Local\\Temp"
 settings:   }
 settings: }
-shutdown: cov-run-desktop terminating with code 0 at 2018-06-18 16:40:21
+shutdown: cov-run-desktop terminating with code 0 at 2018-06-25 08:49:57

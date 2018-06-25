@@ -37,9 +37,13 @@
 
 
             <Label
-                Content="{Binding CurrentHour.DtHuman}"/>
+                Content="{Binding CurrentHour.DtHuman,
+                UpdateSourceTrigger=Explicit}"
+                x:Name="HourLabel"/>
             <Label
-                Content="{Binding CurrentHour.Weather[0].Main}"/>
+                Content="{Binding CurrentHour.Weather[0].Main,
+                UpdateSourceTrigger=Explicit}"
+                x:Name="CurrentConditionLabel"/>
         </StackPanel>
         <StackPanel
             Grid.Column="0"
@@ -48,9 +52,11 @@
             <Image
                 Margin="15,10,0,15"
                 x:Name="WeatherIcon"
-                Source="D:\Users\Chandler\Documents\GitHub\15MinuteProjects\WPFWeather\Media\sunny.png"/>
+                Source="C:\Users\cdavidso\Documents\GitHub\15MinuteProjects\WPFWeather\Media\01.png"/>
             <Label
-                Content="{Binding CurrentHour.Main.TempI}"
+                Content="{Binding CurrentHour.Main.TempI,
+                UpdateSourceTrigger=Explicit}"
+                x:Name="TempLabel"
                 VerticalAlignment="Center"
                 Margin="-10,0,0,20"
                 Style="{StaticResource CurrentTemperature}"/>
@@ -65,9 +71,13 @@
             Grid.Column="1"
             Grid.Row="1"
             Style="{StaticResource LocationDetails}">
-            <Label Content="Percipitation: 0%"/>
-            <Label Content="{Binding CurrentHour.Main.HumidityHuman}"/>
-            <Label Content="{Binding CurrentHour.Wind.WindHuman}"/>
+            <!--<Label Content="Percipitation: 0%"/>-->
+            <Label Content="{Binding CurrentHour.Main.HumidityHuman,
+                UpdateSourceTrigger=Explicit}"
+                   x:Name="HumidityLabel"/>
+            <Label Content="{Binding CurrentHour.Wind.WindHuman,
+                UpdateSourceTrigger=Explicit}"
+                   x:Name="WindLabel"/>
             <StackPanel
                 Orientation="Horizontal"
                 Style="{StaticResource ButtonSelector}">
@@ -101,6 +111,5 @@
             <local:DayViewControl/>
             <local:DayViewControl/>-->
         </StackPanel>
-
     </Grid>
 </Window>
