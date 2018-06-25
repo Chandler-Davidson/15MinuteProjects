@@ -22,32 +22,53 @@ namespace WPFWeather
     public partial class MainWindow : Window
     {
         public Response Response { get; set; }
-        public string CityName => Response.City.Name;
+        public string CityName { get; set; }
+        public Hour CurrentHour { get; set; }
+        public string CurrentTime { get; set; }
+        public string CurrentCondition { get; set; }
+        public object Days { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
 
+            Response = APIWrapper.GetData("Huntsville, AL");
+
+            SetFormControls();
+
+            SetDayView();
+
             DataContext = this;
-
-            var Response = APIWrapper.GetData("Huntsville, AL");
-
         }
+
 
         private void SetFormControls()
         {
+            CityName = Response.City.Name;
+
+            CurrentHour = Response.List[0];
+            CurrentCondition = CurrentHour.Weather[0].Main;
+
+            this.HourlyChart.SetDays(Response.List.ToList());
         }
+        
 
         private void DayView_MouseDown(object sender, MouseButtonEventArgs e)
         {
             foreach (DayViewControl dayControl in this.DayViewController.Children)
                 dayControl.BorderBrush = Brushes.Transparent;
 
-            var d = e.OriginalSource;
-            //d.BorderBrush = Brushes.White;
+            var d = e.OriginalSource;            
+        }
 
-            //this.HourlyChart.SelectedDay = d.Model;
-            
+        private void SetDayView()
+        {
+            var d = Response.List.GroupBy(
+                x => x.DtTxt.Day,
+                (key, w) => new { Dt = key, Hours = w.ToList() }).ToList();
+
+
+            d.ForEach(x => DayViewController.Children.Add(new DayViewControl(x.Hours)));
         }
 
         private void ChangeViewButton_Click(object sender, RoutedEventArgs e)

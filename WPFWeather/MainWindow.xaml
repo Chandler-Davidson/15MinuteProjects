@@ -22,14 +22,13 @@
             Orientation="Vertical"
             Style="{StaticResource LocationDetails}">
             <Label
-                Content="{Binding Source=CityName}"
-                x:Name="LocationName"
+                Content="{Binding Response.City.Name}"
                 FontSize="25"
                 Foreground="#474747"/>
             <Label
-                Content="Saturday 12:00 AM"/>
+                Content="{Binding CurrentHour.DtHuman}"/>
             <Label
-                Content="Clear"/>
+                Content="{Binding CurrentHour.Weather[0].Main}"/>
         </StackPanel>
         <StackPanel
             Grid.Column="0"
@@ -39,12 +38,12 @@
                 Margin="15,10,0,15"
                 Source="D:\Users\Chandler\Documents\GitHub\15MinuteProjects\WPFWeather\Media\sunny.png"/>
             <Label
-                Content="73"
+                Content="{Binding CurrentHour.Main.TempI}"
                 VerticalAlignment="Center"
                 Margin="-10,0,0,20"
                 Style="{StaticResource CurrentTemperature}"/>
             <Label
-                Content="°F | °C"
+                Content="°F"
                 VerticalAlignment="Center"
                 Margin="0,0,0,50"
                 FontSize="20"/>
@@ -55,8 +54,8 @@
             Grid.Row="1"
             Style="{StaticResource LocationDetails}">
             <Label Content="Percipitation: 0%"/>
-            <Label Content="Humidity: 93%"/>
-            <Label Content="Wind: 0 mph"/>
+            <Label Content="{Binding CurrentHour.Main.HumidityHuman}"/>
+            <Label Content="{Binding CurrentHour.Wind.WindHuman}"/>
             <StackPanel
                 Orientation="Horizontal"
                 Style="{StaticResource ButtonSelector}">
@@ -84,11 +83,11 @@
             HorizontalAlignment="Center"
             MouseDown="DayView_MouseDown"
             x:Name="DayViewController">
+            <!--<local:DayViewControl/>
             <local:DayViewControl/>
             <local:DayViewControl/>
             <local:DayViewControl/>
-            <local:DayViewControl/>
-            <local:DayViewControl/>
+            <local:DayViewControl/>-->
         </StackPanel>
 
     </Grid>

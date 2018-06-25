@@ -17,7 +17,7 @@ namespace WPFWeather
 
         public static Response GetData(string location)
         {
-            url = $"http://api.openweathermap.org/data/2.5/forecast?q={location},us&appid={appID}";
+            url = $"http://api.openweathermap.org/data/2.5/forecast?q={location},us,&units=imperial&appid={appID}";
 
             var jsonData = Client.DownloadString(url);
 

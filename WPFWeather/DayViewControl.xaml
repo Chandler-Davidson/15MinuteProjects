@@ -10,7 +10,7 @@
         x:Name="ParentGroupBox">
         <StackPanel
             Orientation="Vertical">
-            <Label Content="Sat"
+            <Label Content="{Binding DayName}"
                    HorizontalAlignment="Center"
                    Style="{StaticResource DayDetialLight}"/>
             <Image
@@ -20,9 +20,10 @@
             <StackPanel
                 Orientation="Horizontal"
                 HorizontalAlignment="Center">
-                <Label Content="95°"/>
-                <Label Content="71°"
-                       Style="{StaticResource DayDetialLight}"/>
+                <Label Content="{Binding High}"/>
+                <Label Content="{Binding Low}"
+                       Style="{StaticResource DayDetialLight}"
+                       FontSize="12"/>
             </StackPanel>
         </StackPanel>
     </GroupBox>

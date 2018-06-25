@@ -25,7 +25,7 @@ namespace GetWeather
         public long Cnt { get; set; }
 
         [JsonProperty("list")]
-        public List[] List { get; set; }
+        public Hour[] List { get; set; }
 
         [JsonProperty("city")]
         public City City { get; set; }
@@ -55,7 +55,7 @@ namespace GetWeather
         public double Lon { get; set; }
     }
 
-    public partial class List
+    public partial class Hour
     {
         [JsonProperty("dt")]
         public long Dt { get; set; }
@@ -78,6 +78,9 @@ namespace GetWeather
         [JsonProperty("dt_txt")]
         public DateTimeOffset DtTxt { get; set; }
 
+        public string DtHuman => DtTxt.DayOfWeek.ToString() + " "
+                + DtTxt.ToString("hh:mm");
+
         [JsonProperty("rain", NullValueHandling = NullValueHandling.Ignore)]
         public Rain Rain { get; set; }
 
@@ -96,6 +99,8 @@ namespace GetWeather
         [JsonProperty("temp")]
         public double Temp { get; set; }
 
+        public int TempI => Convert.ToInt32(Temp);
+
         [JsonProperty("temp_min")]
         public double TempMin { get; set; }
 
@@ -113,6 +118,8 @@ namespace GetWeather
 
         [JsonProperty("humidity")]
         public long Humidity { get; set; }
+
+        public string HumidityHuman => "Humidity: " + Humidity + "%";
 
         [JsonProperty("temp_kf")]
         public double TempKf { get; set; }
@@ -136,10 +143,10 @@ namespace GetWeather
         public long Id { get; set; }
 
         [JsonProperty("main")]
-        public MainEnum Main { get; set; }
+        public string Main { get; set; }
 
         [JsonProperty("description")]
-        public Description Description { get; set; }
+        public string Description { get; set; }
 
         [JsonProperty("icon")]
         public string Icon { get; set; }
@@ -150,15 +157,13 @@ namespace GetWeather
         [JsonProperty("speed")]
         public double Speed { get; set; }
 
+        public string WindHuman => "Wind: " + Convert.ToInt32(Speed) + "mph";
+
         [JsonProperty("deg")]
         public double Deg { get; set; }
     }
 
     public enum Pod { D, N };
-
-    public enum Description { BrokenClouds, ClearSky, FewClouds, LightRain, ModerateRain, ScatteredClouds, HeavyIntenseRain };
-
-    public enum MainEnum { Clear, Clouds, Rain };
 
     public partial class Response
     {
@@ -178,8 +183,6 @@ namespace GetWeather
             DateParseHandling = DateParseHandling.None,
             Converters = {
                 PodConverter.Singleton,
-                DescriptionConverter.Singleton,
-                MainEnumConverter.Singleton,
                 new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
             },
         };
@@ -224,111 +227,5 @@ namespace GetWeather
         }
 
         public static readonly PodConverter Singleton = new PodConverter();
-    }
-
-    internal class DescriptionConverter : JsonConverter
-    {
-        public override bool CanConvert(Type t) => t == typeof(Description) || t == typeof(Description?);
-
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
-        {
-            if (reader.TokenType == JsonToken.Null) return null;
-            var value = serializer.Deserialize<string>(reader);
-            switch (value)
-            {
-                case "broken clouds":
-                    return Description.BrokenClouds;
-                case "clear sky":
-                    return Description.ClearSky;
-                case "few clouds":
-                    return Description.FewClouds;
-                case "light rain":
-                    return Description.LightRain;
-                case "moderate rain":
-                    return Description.ModerateRain;
-                case "scattered clouds":
-                    return Description.ScatteredClouds;
-                case "heavy intensity rain":
-                    return Description.HeavyIntenseRain;
-            }
-            throw new Exception("Cannot unmarshal type Description");
-        }
-
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
-        {
-            if (untypedValue == null)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            var value = (Description)untypedValue;
-            switch (value)
-            {
-                case Description.BrokenClouds:
-                    serializer.Serialize(writer, "broken clouds");
-                    return;
-                case Description.ClearSky:
-                    serializer.Serialize(writer, "clear sky");
-                    return;
-                case Description.FewClouds:
-                    serializer.Serialize(writer, "few clouds");
-                    return;
-                case Description.LightRain:
-                    serializer.Serialize(writer, "light rain");
-                    return;
-                case Description.ModerateRain:
-                    serializer.Serialize(writer, "moderate rain");
-                    return;
-            }
-            throw new Exception("Cannot marshal type Description");
-        }
-
-        public static readonly DescriptionConverter Singleton = new DescriptionConverter();
-    }
-
-    internal class MainEnumConverter : JsonConverter
-    {
-        public override bool CanConvert(Type t) => t == typeof(MainEnum) || t == typeof(MainEnum?);
-
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
-        {
-            if (reader.TokenType == JsonToken.Null) return null;
-            var value = serializer.Deserialize<string>(reader);
-            switch (value)
-            {
-                case "Clear":
-                    return MainEnum.Clear;
-                case "Clouds":
-                    return MainEnum.Clouds;
-                case "Rain":
-                    return MainEnum.Rain;
-            }
-            throw new Exception("Cannot unmarshal type MainEnum");
-        }
-
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
-        {
-            if (untypedValue == null)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            var value = (MainEnum)untypedValue;
-            switch (value)
-            {
-                case MainEnum.Clear:
-                    serializer.Serialize(writer, "Clear");
-                    return;
-                case MainEnum.Clouds:
-                    serializer.Serialize(writer, "Clouds");
-                    return;
-                case MainEnum.Rain:
-                    serializer.Serialize(writer, "Rain");
-                    return;
-            }
-            throw new Exception("Cannot marshal type MainEnum");
-        }
-
-        public static readonly MainEnumConverter Singleton = new MainEnumConverter();
     }
 }
