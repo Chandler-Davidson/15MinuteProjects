@@ -1,6 +1,8 @@
 # 15MinuteProjects
 Short projects to keep the dev juices flowin'.
 
+The repo is split into JS and C#. The JS directory is a collection of challenges from [Robert Heaton](https://robertheaton.com/). The C# directory is a collection of various projects I found interesting.
+
 ## Elitist Fizz Buzz
 ### Purpose
 The fizzbuzz program that proves you're right. Not just technically right, but practically too!
