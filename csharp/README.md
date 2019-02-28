@@ -9,6 +9,10 @@ For each solution, I tried to provide a unique solution that have varying amount
 #### Purpose
 Completed for an online programming challenge, thought it was a unique solution to an everyday problem.
 
+### RedditWallpaperChanger
+#### Purpose
+I wanted to dynamically set my wallpaper to the best wallpaper on Reddit everyday. Instead of finding a tool, I wrote it myself! Any code that is not my own is marked as such.
+
 ### Trying Tries
 #### Purpose
 A review of Data Structures by building a Trie.
