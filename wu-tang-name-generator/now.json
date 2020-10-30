@@ -1,0 +1,16 @@
+{
+  "name": "wu-tang-name-generator",
+  "builds": [
+    {
+      "src": "src/next.config.js",
+      "use": "@now/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "src/$1",
+      "continue": true
+    }
+  ]
+}
